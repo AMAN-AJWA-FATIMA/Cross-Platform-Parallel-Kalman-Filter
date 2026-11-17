@@ -1,0 +1,21 @@
+# Compiled binaries
+kalman_linux
+kalman_windows.exe
+*.o
+*.obj
+*.exe
+
+# Temporary files
+*.tmp
+*.bak
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated large dataset
+input/big.csv

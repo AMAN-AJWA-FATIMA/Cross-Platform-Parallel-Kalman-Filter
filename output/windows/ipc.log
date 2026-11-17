@@ -1,0 +1,4 @@
+[ OK ] CreatePipe(): child process read the message the parent wrote
+[ OK ] CreateFileMapping()/MapViewOfFile(): child process read the values the parent stored; mapping closed
+[INFO] process-level resources (whole process, NOT one call): user CPU 15.625 ms, kernel CPU 31.250 ms, peak working set 5928.0 KB, peak pagefile 1132.0 KB
+[ OK ] saved output\windows\performance_ipc.csv

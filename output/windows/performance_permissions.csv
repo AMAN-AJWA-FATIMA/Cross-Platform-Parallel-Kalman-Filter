@@ -1,0 +1,3 @@
+Category,Operation,Run1_ms,Run2_ms,Run3_ms,Run4_ms,Run5_ms,Average_ms
+Permissions,SetFileSecurity (read-only DACL),0.678400,0.245500,0.251600,0.359800,0.214800,0.350020
+Permissions,SetFileSecurity (restore DACL),0.209700,0.214600,0.203500,0.258800,0.192800,0.215880

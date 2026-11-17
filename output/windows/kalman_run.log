@@ -1,0 +1,6 @@
+[ OK ] read 492 bytes via CreateFile/ReadFile/CloseHandle; 20 rows x 4 sensor channels
+[ OK ] CreateFileMapping + MapViewOfFile: shared [input array | output array | timing slots], 1792 bytes
+[ OK ] 4 worker process(es) finished (CreateProcess/WaitForSingleObject); results received via pipe + shared memory
+[ OK ] parallel output vs sequential output: max |difference| = 0.000000
+[ OK ] filtered output written with CreateFile/WriteFile/CloseHandle: output\windows\kalman_output.csv
+[ OK ] SetFileSecurity: output file is now read-only for Users

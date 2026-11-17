@@ -1,0 +1,14 @@
+hello from child program (execv)
+[ OK ] parent pid 8695 created child pid 8696; child exec'd /bin/echo; wait() returned exit status 0
+hello from child program (execv)
+hello from child program (execv)
+hello from child program (execv)
+hello from child program (execv)
+
+Category     Operation                                Run1       Run2       Run3       Run4       Run5  Average(ms)
+Process      fork                                 0.232914   0.269371   0.297306   0.229981   0.300868     0.266088
+Process      wait (blocked until child exit)      1.907176   1.986304   1.964375   1.963466   1.784818     1.921228
+Process      fork+execv+wait (total)              2.148681   2.264824   2.269783   2.200921   2.096092     2.196060
+[INFO] process-level resources (whole process, NOT one call): user CPU 2.245 ms, system CPU 3.367 ms, peak RSS 3476 KB
+[INFO] terminated children combined: user CPU 2.829 ms, system CPU 6.492 ms, largest child peak RSS 1828 KB
+[ OK ] saved output/linux/performance_process.csv

@@ -1,0 +1,7 @@
+[ OK ] SetFileSecurity: read-only DACL applied; opening for write was DENIED as expected
+[INFO] DACL now: D:P(A;;FR;;;BU)(A;;FA;;;SY)(A;;FA;;;BA)
+[ OK ] SetFileSecurity: full-control DACL restored; opening for write now SUCCEEDS
+[INFO] DACL now: D:P(A;;FA;;;BU)(A;;FA;;;SY)(A;;FA;;;BA)
+[INFO] Windows has no umask()/chown() equivalent in the CCA table; ownership is not changed here.
+[INFO] process-level resources (whole process, NOT one call): user CPU 31.250 ms, kernel CPU 0.000 ms, peak working set 6224.0 KB, peak pagefile 1124.0 KB
+[ OK ] saved output\windows\performance_permissions.csv

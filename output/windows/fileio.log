@@ -1,0 +1,5 @@
+[ OK ] CreateFile(input\sensor_data.csv) ok, ReadFile read 492 bytes
+[ OK ] WriteFile wrote 492 bytes to output\windows\fileio_copy.txt
+[ OK ] CloseHandle succeeded on both handles
+[INFO] process-level resources (whole process, NOT one call): user CPU 15.625 ms, kernel CPU 15.625 ms, peak working set 5716.0 KB, peak pagefile 1112.0 KB
+[ OK ] saved output\windows\performance_fileio.csv

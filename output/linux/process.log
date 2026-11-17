@@ -1,0 +1,4 @@
+[ OK ] parent pid 26244 created child pid 26245; child exec'd /bin/echo; wait() returned exit status 0
+[INFO] process-level resources (whole process, NOT one call): user CPU 0.771 ms, system CPU 1.543 ms, peak RSS 3640 KB
+[INFO] terminated children combined: user CPU 2.278 ms, system CPU 1.612 ms, largest child peak RSS 1888 KB
+[ OK ] saved output/linux/performance_process.csv

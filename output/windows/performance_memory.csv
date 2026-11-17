@@ -1,0 +1,3 @@
+Category,Operation,Run1_ms,Run2_ms,Run3_ms,Run4_ms,Run5_ms,Average_ms
+Memory,VirtualAlloc (1MiB),0.006600,0.028800,0.004600,0.003000,0.002900,0.009180
+Memory,VirtualFree (1MiB),0.075400,0.100500,0.064000,0.085700,0.062400,0.077600

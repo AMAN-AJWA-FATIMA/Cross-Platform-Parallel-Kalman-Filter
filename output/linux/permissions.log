@@ -1,0 +1,4 @@
+[FAIL] umask(077): open(...,0666) produced mode 0666 (expected 0600); old mask was 0002
+[INFO] process-level resources (whole process, NOT one call): user CPU 0.000 ms, system CPU 1.149 ms, peak RSS 3528 KB
+[INFO] terminated children combined: user CPU 0.000 ms, system CPU 0.000 ms, largest child peak RSS 0 KB
+[ OK ] saved output/linux/performance_permissions.csv

@@ -1,0 +1,22 @@
+[ OK ] read 492 bytes via open/read/close; 20 rows x 4 sensor channels
+[ OK ] mmap(MAP_SHARED) of output/linux/kalman_arrays.bin: [input array | output array], 1280 bytes
+worker 1 (pid 9947): channels 2..2 filtered in 0.0227 ms
+worker 0 (pid 9946): channels 1..1 filtered in 0.0158 ms
+worker 2 (pid 9948): channels 3..3 filtered in 0.0140 ms
+worker 3 (pid 9949): channels 4..4 filtered in 0.0176 ms
+[ OK ] 4 worker process(es) finished (fork/execv/waitpid); results received via pipe + shared memory
+[ OK ] parallel output vs sequential output: max |difference| = 0.000000
+[ OK ] filtered output written with open/write/close: output/linux/kalman_output.csv
+[ OK ] chmod(output/linux/kalman_output.csv, 0640) -> mode now 0640
+
+TIMING SUMMARY (ms)  rows=20 cols=4 workers=4
+  read file (open/read/close) : 0.1441
+  parse CSV                   : 0.0381
+  mmap + copy input           : 0.1562
+  parallel phase (fork..wait) : 5.2590   (slowest worker compute: 0.0227)
+  sequential compute (1 proc) : 0.0197
+  write output file           : 0.4228
+  sequential/parallel ratio   : 0.004   (>1 means parallel was faster; <1 means slower)
+  total wall time             : 6.4675
+[INFO] process-level resources (whole process, NOT one call): user CPU 1.930 ms, system CPU 5.790 ms, peak RSS 3700 KB
+[INFO] terminated children combined: user CPU 5.416 ms, system CPU 9.622 ms, largest child peak RSS 3876 KB

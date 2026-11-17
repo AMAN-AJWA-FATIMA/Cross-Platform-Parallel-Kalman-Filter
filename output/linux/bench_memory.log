@@ -1,0 +1,11 @@
+[ OK ] mmap(anonymous) 1 MiB: wrote and verified 262144 ints, then munmap OK
+[ OK ] mmap(file) of input/sensor_data.csv: bytes identical to read() data, munmap OK
+
+Category     Operation                                Run1       Run2       Run3       Run4       Run5  Average(ms)
+Memory       mmap (anonymous 1MiB)                0.013479   0.010545   0.018577   0.008102   0.009009     0.011942
+Memory       munmap (anonymous 1MiB)              0.193246   0.188357   0.224254   0.196598   0.198204     0.200132
+Memory       mmap (file)                          0.015784   0.012222   0.010406   0.011035   0.014806     0.012851
+Memory       munmap (file)                        0.015365   0.013269   0.012851   0.013339   0.014666     0.013898
+[INFO] process-level resources (whole process, NOT one call): user CPU 6.014 ms, system CPU 8.019 ms, peak RSS 4204 KB
+[INFO] terminated children combined: user CPU 0.000 ms, system CPU 0.000 ms, largest child peak RSS 0 KB
+[ OK ] saved output/linux/performance_memory.csv

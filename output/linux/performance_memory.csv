@@ -1,0 +1,5 @@
+Category,Operation,Run1_ms,Run2_ms,Run3_ms,Run4_ms,Run5_ms,Average_ms
+Memory,mmap (anonymous 1MiB),0.002625,0.002076,0.001766,0.001956,0.001856,0.002056
+Memory,munmap (anonymous 1MiB),0.062213,0.059510,0.069038,0.060178,0.059160,0.062020
+Memory,mmap (file),0.003632,0.002914,0.002754,0.002644,0.002804,0.002950
+Memory,munmap (file),0.003492,0.003113,0.003053,0.006985,0.003053,0.003939

@@ -1,0 +1,4 @@
+Category,Operation,Run1_ms,Run2_ms,Run3_ms,Run4_ms,Run5_ms,Average_ms
+Process,CreateProcess,31.917800,4.513100,5.528700,6.625400,5.069300,10.730860
+Process,WaitForSingleObject (blocked until child exit),27.558600,27.246400,23.249600,24.514100,26.048900,25.723520
+Process,CreateProcess+Wait (total),59.476900,31.759800,28.778600,31.140000,31.118500,36.454760

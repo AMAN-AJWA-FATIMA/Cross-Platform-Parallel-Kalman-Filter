@@ -1,0 +1,12 @@
+[ OK ] umask(077): open(...,0666) produced mode 0600 (expected 0600); old mask was 0002
+[ OK ] chmod(output/linux/perm_test.txt, 0600) -> mode now 0600
+[ OK ] chown(output/linux/perm_test.txt, uid=1000, gid=1000) succeeded
+[INFO] chown to root denied by the OS (normal without sudo): errno=1
+
+Category     Operation                                Run1       Run2       Run3       Run4       Run5  Average(ms)
+Permissions  umask                                0.004330   0.003911   0.002933   0.003212   0.002933     0.003464
+Permissions  chmod                                0.020952   0.019974   0.014806   0.013829   0.018996     0.017711
+Permissions  chown (to self)                      0.031428   0.020113   0.018158   0.017320   0.021930     0.021790
+[INFO] process-level resources (whole process, NOT one call): user CPU 2.156 ms, system CPU 2.156 ms, peak RSS 3508 KB
+[INFO] terminated children combined: user CPU 0.000 ms, system CPU 0.000 ms, largest child peak RSS 0 KB
+[ OK ] saved output/linux/performance_permissions.csv

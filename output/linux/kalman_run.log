@@ -1,0 +1,6 @@
+[ OK ] read 492 bytes via open/read/close; 20 rows x 4 sensor channels
+[ OK ] mmap(MAP_SHARED) of output/linux/kalman_arrays.bin: [input array | output array], 1280 bytes
+[ OK ] 4 worker process(es) finished (fork/execv/waitpid); results received via pipe + shared memory
+[ OK ] parallel output vs sequential output: max |difference| = 0.000000
+[ OK ] filtered output written with open/write/close: output/linux/kalman_output.csv
+[ OK ] chmod(output/linux/kalman_output.csv, 0640) -> mode now 0640

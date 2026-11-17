@@ -1,0 +1,12 @@
+[ OK ] open(input/sensor_data.csv) returned fd, read 492 bytes
+[ OK ] write() wrote 492 bytes to output/linux/fileio_copy.txt
+[ OK ] close() succeeded on both descriptors
+
+Category     Operation                                Run1       Run2       Run3       Run4       Run5  Average(ms)
+File I/O     open                                 0.019206   0.027657   0.022279   0.023257   0.022838     0.023047
+File I/O     read                                 0.008939   0.006774   0.006635   0.006635   0.006145     0.007026
+File I/O     write                                0.045675   0.033313   0.023466   0.022907   0.040158     0.033104
+File I/O     close                                0.007612   0.005797   0.004679   0.005238   0.005308     0.005727
+[INFO] process-level resources (whole process, NOT one call): user CPU 1.969 ms, system CPU 2.954 ms, peak RSS 3628 KB
+[INFO] terminated children combined: user CPU 0.000 ms, system CPU 0.000 ms, largest child peak RSS 0 KB
+[ OK ] saved output/linux/performance_fileio.csv

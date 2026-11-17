@@ -1,0 +1,4 @@
+Category,Operation,Run1_ms,Run2_ms,Run3_ms,Run4_ms,Run5_ms,Average_ms
+Process,fork,0.152356,0.102006,0.177760,0.177021,0.135063,0.148841
+Process,wait (blocked until child exit),1.296803,0.826256,0.639367,0.830517,0.795883,0.877765
+Process,fork+execv+wait (total),1.449338,0.928362,0.817215,1.007628,0.931046,1.026718

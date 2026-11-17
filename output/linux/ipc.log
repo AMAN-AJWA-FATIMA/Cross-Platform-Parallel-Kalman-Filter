@@ -1,0 +1,5 @@
+[ OK ] pipe(): child process read the message the parent wrote
+[ OK ] shmget()/shmat(): child process read the values the parent stored; segment removed
+[INFO] process-level resources (whole process, NOT one call): user CPU 1.038 ms, system CPU 2.077 ms, peak RSS 3600 KB
+[INFO] terminated children combined: user CPU 1.126 ms, system CPU 0.739 ms, largest child peak RSS 1160 KB
+[ OK ] saved output/linux/performance_ipc.csv

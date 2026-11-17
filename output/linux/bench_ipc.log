@@ -1,0 +1,13 @@
+       child received via pipe: "sensor-batch-ready"
+       child read from shared memory: 10.5 21.0 31.5 42.0 52.5
+[ OK ] pipe(): child process read the message the parent wrote
+[ OK ] shmget()/shmat(): child process read the values the parent stored; segment removed
+
+Category     Operation                                Run1       Run2       Run3       Run4       Run5  Average(ms)
+IPC          pipe                                 0.035269   0.018018   0.016692   0.018578   0.038062     0.025324
+IPC          write (to pipe)                      0.009149   0.008451   0.009219   0.009848   0.009987     0.009331
+IPC          shmget                               0.058596   0.040018   0.046234   0.052868   0.046024     0.048748
+IPC          shmat                                0.061040   0.021720   0.029123   0.021929   0.021511     0.031065
+[INFO] process-level resources (whole process, NOT one call): user CPU 2.220 ms, system CPU 6.662 ms, peak RSS 3568 KB
+[INFO] terminated children combined: user CPU 3.291 ms, system CPU 0.722 ms, largest child peak RSS 1148 KB
+[ OK ] saved output/linux/performance_ipc.csv
