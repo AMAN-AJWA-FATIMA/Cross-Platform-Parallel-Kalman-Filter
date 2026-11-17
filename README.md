@@ -37,28 +37,45 @@ A common Kalman filter implementation is shared between both operating systems, 
 
 | Parameter | Value |
 |---|---:|
-| Initial estimate (x) | First measurement |
-| Initial uncertainty (P) | 1.0 |
-| Process noise (Q) | 0.01 |
-| Measurement noise (R) | 1.0 |
+| Initial estimate ($x$) | First measurement |
+| Initial uncertainty ($P$) | 1.0 |
+| Process noise ($Q$) | 0.01 |
+| Measurement noise ($R$) | 1.0 |
 
-The filter applies the prediction and measurement update equations:
+The filter applies the prediction and measurement update equations.
 
-\[
+**Prediction:**
+
+$$
 P^- = P + Q
-\]
+$$
 
-\[
-K = \frac{P^-}{P^-+R}
-\]
+**Kalman Gain:**
 
-\[
+$$
+K = \frac{P^-}{P^- + R}
+$$
+
+**State Update:**
+
+$$
 x = x + K(z-x)
-\]
+$$
 
-\[
+**Uncertainty Update:**
+
+$$
 P = (1-K)P^-
-\]
+$$
+
+Where:
+- $x$ = estimated state
+- $P$ = estimation uncertainty
+- $P^-$ = predicted uncertainty
+- $K$ = Kalman gain
+- $z$ = sensor measurement
+- $Q$ = process noise
+- $R$ = measurement noise
 
 ### Correctness Validation
 
@@ -108,177 +125,20 @@ The measurements demonstrate that operating system performance varies by operati
 
 Experiments were conducted using a small dataset (20 rows) and a large dataset (1,000,000 rows).
 
-Speedup ratio:
+**Speedup ratio:**
 
-\[
+$$
 \text{Speedup} = \frac{T_{\text{sequential}}}{T_{\text{parallel}}}
-\]
+$$
+
+Where:
+- $T_{\text{sequential}}$ = sequential execution time.
+- $T_{\text{parallel}}$ = parallel execution time.
+
+A ratio greater than 1 indicates faster parallel execution, while a ratio below 1 indicates faster sequential execution.
 
 | OS | Dataset | Sequential Avg (ms) | Parallel Avg (ms) | Ratio |
 |---|---|---:|---:|---:|
 | Linux | Small | 0.0180 | 5.404 | 0.0033 |
 | Linux | Large | 191.80 | 156.14 | **1.23×** |
-| Windows | Small | 0.0078 | 61.88 | 0.00013 |
-| Windows | Large | 163.62 | 220.81 | 0.74× |
-
-A ratio above 1 indicates faster parallel execution.
-
-**Key finding:** Four-process execution improved large-dataset performance on Linux by approximately 23%, while Windows parallel execution was approximately 26% slower than its sequential baseline.
-
-For small datasets, process creation and synchronization overhead outweighed the computational benefits of parallelism.
-
-## 4. Project Structure
-
-```text
-Operating_System_CCA/
-│
-├── common/
-│   ├── KalmanFilter.h
-│   └── KalmanFilter.cpp
-│
-├── linux/
-│   ├── main.cpp
-│   ├── Modules.h
-│   ├── FileIO.cpp
-│   ├── ProcessManagement.cpp
-│   ├── MemoryManagement.cpp
-│   ├── IPC.cpp
-│   ├── Permissions.cpp
-│   └── Performance.cpp
-│
-├── windows/
-│   ├── main.cpp
-│   ├── Modules.h
-│   ├── FileIO.cpp
-│   ├── ProcessManagement.cpp
-│   ├── MemoryManagement.cpp
-│   ├── IPC.cpp
-│   ├── Permissions.cpp
-│   └── Performance.cpp
-│
-├── input/
-│   └── sensor_data.csv
-│
-├── output/
-│   ├── linux/
-│   └── windows/
-│
-└── report/
-    ├── performance_template.csv
-    ├── final_report.md
-    └── presentation_and_viva.md
-```
-
-## 5. Build Instructions
-
-**Requirements**
-- C++17 compatible compiler
-- GCC/G++ on Linux
-- MinGW-w64 or Microsoft Visual C++ on Windows
-- Windows libraries: `advapi32`, `psapi`
-
-Run commands from the project root.
-
-### Linux
-
-```bash
-g++ -std=c++17 -O2 -Wall -Wextra \
--o kalman_linux common/KalmanFilter.cpp linux/*.cpp
-```
-
-### Windows (MinGW-w64)
-
-```bash
-g++ -std=c++17 -O2 -o kalman_windows.exe \
-common\KalmanFilter.cpp windows\main.cpp \
-windows\FileIO.cpp windows\ProcessManagement.cpp \
-windows\MemoryManagement.cpp windows\IPC.cpp \
-windows\Permissions.cpp windows\Performance.cpp \
--ladvapi32 -lpsapi
-```
-
-## 6. Execution
-
-### Linux
-
-```bash
-# Run individual benchmarks
-./kalman_linux bench fileio
-./kalman_linux bench process
-./kalman_linux bench memory
-./kalman_linux bench ipc
-./kalman_linux bench permissions
-
-# Run all benchmarks
-./kalman_linux bench all
-
-# Sequential and parallel execution
-./kalman_linux kalman 1
-./kalman_linux kalman 4
-
-# Generate a large dataset
-./kalman_linux gen 1000000 8 input/big.csv
-
-# Execute parallel filtering
-./kalman_linux kalman 4 input/big.csv
-```
-
-### Windows
-
-```bash
-# Run individual benchmarks
-kalman_windows bench fileio
-kalman_windows bench process
-kalman_windows bench memory
-kalman_windows bench ipc
-kalman_windows bench permissions
-
-# Run all benchmarks
-kalman_windows bench all
-
-# Sequential and parallel execution
-kalman_windows kalman 1
-kalman_windows kalman 4
-
-# Generate a large dataset
-kalman_windows gen 1000000 8 input\big.csv
-
-# Execute parallel filtering
-kalman_windows kalman 4 input\big.csv
-```
-
-## 7. Technologies and Concepts
-
-- **Language:** C++17
-- **Operating Systems:** Linux and Windows
-- **System Interfaces:** POSIX System Calls and Windows Win32 API
-- **Process Management:** Forking, process creation, execution, synchronization
-- **Memory Management:** Virtual memory and memory mapping
-- **IPC:** Pipes and shared memory
-- **File Systems:** File handling and access permissions
-- **Algorithm:** Kalman Filtering
-- **Benchmarking:** Execution time, CPU time, and memory measurements
-- **Data Handling:** CSV input/output and performance logging
-
-## 8. References
-
-The following primary documentation and research sources provide the technical foundation for the implementation.
-
-1. **Linux Man Pages Project.** Linux system call and library interface documentation.  
-   https://man7.org/linux/man-pages/
-
-2. **Microsoft Learn.** Windows API and Win32 application development documentation.  
-   https://learn.microsoft.com/en-us/windows/win32/
-
-3. **Microsoft Learn.** Creating and Opening Files.  
-   https://learn.microsoft.com/en-us/windows/desktop/FileIO/creating-and-opening-files
-
-4. **Microsoft Learn.** Creating Processes.  
-   https://learn.microsoft.com/en-us/windows/win32/procthread/creating-processes
-
-5. **Kalman, R. E. (1960).** A New Approach to Linear Filtering and Prediction Problems. *Journal of Basic Engineering*, 82(1), 35–45.  
-   https://doi.org/10.1115/1.3662552
-
-6. **Silberschatz, A., Galvin, P. B., & Gagne, G.** *Operating System Concepts*. Wiley.
-
----
+| Windows | Small | 0.0078 | 61
